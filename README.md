@@ -29,3 +29,11 @@
 
 ## Testing
 1. Run command: `npm run test`
+
+## Maintainers
+
+- Mauricio dos Santos Henrique - mauricio.henrique@somosphi.com
+
+- Ciro Stodulski de Azevedo - ciro.azevedo@somosphi.com
+
+- Lucas Bagatini - lucas.bagatini@somosphi.com
