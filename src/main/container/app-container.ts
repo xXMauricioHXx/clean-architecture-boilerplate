@@ -1,4 +1,3 @@
-import { container } from 'tsyringe';
 import { UserRepository } from '@/infra/repositories/user';
 import { HttpService } from '@/infra/http/http.service';
 import { JsonPlaceHolderIntegration } from '@/infra/http/integrations';
@@ -8,12 +7,15 @@ import {
   FetchUsersUseCase,
   ListUsersByIdUseCase,
   ListUsersUseCase,
+  LoginByUsernameUseCase,
 } from '@/core/useCases';
-import { BaseContainer } from './config/base';
+import { BaseContainer } from '@/main/container/config/base';
+import { CacheService } from '@/infra/cache/cache.service';
 
-class AppContainer extends BaseContainer {
+export class AppContainer extends BaseContainer {
   loadProviders(): Function[] {
     return [
+      CacheService,
       HttpService,
       JsonPlaceHolderIntegration,
       ListUsersUseCase,
@@ -21,6 +23,7 @@ class AppContainer extends BaseContainer {
       UserRepository,
       LogUserInfoProducer,
       FetchUsersUseCase,
+      LoginByUsernameUseCase,
     ];
   }
 
@@ -30,5 +33,3 @@ class AppContainer extends BaseContainer {
     };
   }
 }
-
-export default new AppContainer(container).getContainer();
